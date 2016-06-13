@@ -1,5 +1,5 @@
 // Demonstrates inheritance from CommissionEmployee class
-public class BasePlusCommissionEmployee2 extends CommissionEmployee2 {
+public class BasePlusCommissionEmployee3 extends CommissionEmployee3 {
   private double baseSalary; // weekly
 
   // Accessors
@@ -12,7 +12,7 @@ public class BasePlusCommissionEmployee2 extends CommissionEmployee2 {
   }
   
   // Constructor
-  public BasePlusCommissionEmployee2(String first,
+  public BasePlusCommissionEmployee3(String first,
                                      String last,
                                      String ssn,
                                      double sales,
@@ -25,23 +25,16 @@ public class BasePlusCommissionEmployee2 extends CommissionEmployee2 {
 
   // toString
   public String toString() {
-    return String.format("%s: %s %s\n%s: %s\n%s: %.2f\n%s: %.2f\n",
-                         "base-salaried commission employee",
-                         firstName,
-                         lastName,
-                         "social security number",
-                         socialSecurityNumber,
-                         "gross sales",
-                         grossSales,
-                         "commission rate",
-                         commissionRate,
+    return String.format("%s: %s %s\n%s: %.2f",
+                         "base-salaried",
+                         super.toString(),
                          "base salary",
-                         baseSalary);
+                         getBaseSalary());
   }
   
 
   public double earnings() {
-    return baseSalary + (commissionRate * grossSales);
+    return getBaseSalary() + super.earnings();
   }
 
   
