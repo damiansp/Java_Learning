@@ -1,5 +1,5 @@
 // Demonstrates inheritance from CommissionEmployee class
-public class BasePlusCommissionEmployee3 extends CommissionEmployee3 {
+public class BasePlusCommissionEmployee4 extends CommissionEmployee4 {
   private double baseSalary; // weekly
 
   // Accessors
@@ -12,7 +12,7 @@ public class BasePlusCommissionEmployee3 extends CommissionEmployee3 {
   }
   
   // Constructor
-  public BasePlusCommissionEmployee3(String first,
+  public BasePlusCommissionEmployee4(String first,
                                      String last,
                                      String ssn,
                                      double sales,
@@ -21,6 +21,8 @@ public class BasePlusCommissionEmployee3 extends CommissionEmployee3 {
     // call superclass constructor
     super(first, last, ssn, sales, rate);
     setBaseSalary(salary);
+
+    System.out.printf("\nBasePlusCommissionEmployee4 constructor:\n%s\n", this);
   }
 
   // toString
