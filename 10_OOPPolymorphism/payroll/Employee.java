@@ -22,8 +22,8 @@ public abstract class Employee {
   public String getSocialSecurityNumber() { return socialSecurityNumber; }
 
   // toString
-  public String toStrin() {
-    return String.format("%s %s\nSocial Security Numebr: %s",
+  public String toString() {
+    return String.format("%s %s\nSocial Security Number: %s",
                          getFirstName(), getLastName(), getSocialSecurityNumber());
   }
 
