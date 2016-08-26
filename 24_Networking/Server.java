@@ -38,7 +38,7 @@ public class Server extends JFrame {
 
     add(enterField, BorderLayout.NORTH);
     add(new JScrollPane(displayArea), BorderLayout.CENTER);
-    setSize(300, 150);
+    setSize(400, 150);
     setVisible(true);
   }
   
@@ -100,7 +100,7 @@ public class Server extends JFrame {
       } catch (ClassNotFoundException cnfEx) {
         displayMessage("\nUnknown object type received");
       }
-    } while (!message.equals("CLENT > TERMINATE"));
+    } while (!message.equals("CLIENT > TERMINATE"));
   }
 
   // Close streams, socket
