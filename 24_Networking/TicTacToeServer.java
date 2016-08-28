@@ -218,7 +218,7 @@ public class TicTacToeServer extends JFrame {
             output.flush();
           } else {
             // invalid move
-            output.format("Invalid move.  Try another spot.\n");
+            output.format("Invalid move. Try another spot.\n");
             output.flush();
           }
         }
