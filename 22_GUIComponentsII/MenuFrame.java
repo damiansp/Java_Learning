@@ -40,6 +40,7 @@ public class MenuFrame extends JFrame {
     fileMenu.add(aboutItem);
     aboutItem.addActionListener(new ActionListener() {
         // Display msg dialogue
+        @Override
         public void actionPerformed(ActionEvent e) {
           JOptionPane.showMessageDialog(MenuFrame.this,
                                         "This is an example\nof menu use",
@@ -53,6 +54,7 @@ public class MenuFrame extends JFrame {
     exitItem.setMnemonic('x');
     fileMenu.add(exitItem);
     exitItem.addActionListener( new ActionListener() {
+        @Override
         public void actionPerformed(ActionEvent e) {
           System.exit(0);
         }
@@ -126,6 +128,7 @@ public class MenuFrame extends JFrame {
   // Event handler class
   private class ItemHandler implements ActionListener {
     // Color and font selections
+    @Override
     public void actionPerformed(ActionEvent e) {
       // color
       for (int i = 0; i < colorItems.length; i++) {
@@ -149,21 +152,22 @@ public class MenuFrame extends JFrame {
   // Handle for style from check boxes
   private class StyleHandler implements ItemListener {
     // font style
+    @Override
     public void itemStateChanged(ItemEvent e) {
-      style = 0;
-
-      // bold
-      if (styleItems[0].isSelected()) {
-        style += Font.BOLD;
+      String name = displayLabel.getFont().getName(); // current font
+      Font font;
+      
+      if (styleItems[0].isSelected() && styleItems[1].isSelected()) {
+        font = new Font(name, Font.BOLD + Font.ITALIC, 72);
+      } else if (styleItems[0].isSelected()) {
+        font = new Font(name, Font.BOLD, 72);
+      } else if (styleItems[1].isSelected()) {
+        font = new Font(name, Font.ITALIC, 72);
+      } else {
+        font = new Font(name, Font.PLAIN, 72);
       }
 
-      // italic
-      if (styleItems[1].isSelected()) {
-        style += Font.ITALIC;
-      }
-
-      displayLabel.setFont(
-        new Font(displayLabel.getFont().getName(), style, 72));
+      displayLabel.setFont(font);
       repaint();
     }    
   }
