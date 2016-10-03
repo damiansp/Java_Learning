@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 public class OvalPanel extends JPanel {
   private int diameter = 10;
 
+  @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     g.setColor(Color.YELLOW);
