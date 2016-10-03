@@ -24,6 +24,7 @@ public class SliderFrame extends JFrame {
 
     // Register listener
     diamSlider.addChangeListener(new ChangeListener() {
+        @Override
         public void stateChanged(ChangeEvent e) {
           panel.setDiameter(diamSlider.getValue());
         }
