@@ -3,14 +3,27 @@ import java.util.Scanner;
 
 public class AccountTest {
   public static void main(String[] args) {
+    Account account1 = new Account("Jane G. Green", 50.00);
+    Account account2 = new Account("Sylas C. Blue", -7.53);
     Scanner input = new Scanner(System.in);
-    Account myAccount = new Account();
+    Account[] accounts = {account1, account2};
 
-    System.out.printf("Initial name is: %s\n\n", myAccount.getName());
-    System.out.println("Please enter the name:");
-    String name = input.nextLine();
+    printAccounts(accounts);
+    System.out.printf("Enter deposit amount for %s's account: ",
+                      account2.getName());
+    double depositAmount = input.nextDouble();
+    account2.deposit(depositAmount);
+    printAccounts(accounts);
+   
+  }
 
-    myAccount.setName(name);
-    System.out.printf("\nName in myAccount is:\n%s\n", myAccount.getName());
+  public static void printAccounts(Account[] accounts) {
+    for (int i=0; i < accounts.length; i++) {
+      System.out.printf("%s's account has $%.2f\n",
+                        accounts[i].getName(),
+                        accounts[i].getBalance());
+    }
   }
 }
+
+
