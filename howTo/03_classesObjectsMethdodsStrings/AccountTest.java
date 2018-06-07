@@ -14,7 +14,13 @@ public class AccountTest {
     double depositAmount = input.nextDouble();
     account2.deposit(depositAmount);
     printAccounts(accounts);
-   
+
+    System.out.printf("Enter withdrawal amount for %s's account: ",
+                      account1.getName());
+    double withdrawalAmount = input.nextDouble();
+    double cashDispensed = account1.withdraw(withdrawalAmount);
+    System.out.printf("You have cash in the amount of $%.2f.\n", cashDispensed);
+    printAccounts(accounts);   
   }
 
   public static void printAccounts(Account[] accounts) {

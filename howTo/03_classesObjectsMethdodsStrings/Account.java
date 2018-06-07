@@ -21,6 +21,18 @@ public class Account {
     }
   }
 
+  public double withdraw(double amount) {
+    if (balance < amount) {
+      System.out.printf("Account only has $%.2f; withdraw cannot be greater " +
+                        "than this amount.\n",
+                        balance);
+    } else {
+      balance -= amount;
+      System.out.printf("Dispensing $%.2f...\n", amount);
+    }
+    return amount;
+  }
+
   public double getBalance() {
     return balance;
   }
