@@ -30,7 +30,7 @@ public class DeckOfCards {
     if (currentCard < deck.length) {
       return deck[currentCard++];
     } else {
-      Sytem.out.println("No more cards.");
+      System.out.println("No more cards.");
       return null;
     }
   }
