@@ -30,6 +30,8 @@ public class CommissionEmployee extends Object {
 
   public double getCommissionRate() { return commissionRate; }
 
+  public double getGrossSales() { return grossSales; }
+
   public void setGrossSales(double GrossSales) {
     if (grossSales < 0.0) {
       throw new IllegalArgumentException("Gross sales cannot be negative");
@@ -49,7 +51,7 @@ public class CommissionEmployee extends Object {
   @Override // overrides superclass method
   public String toString() {
     return String.format(
-      "Commision Employee: %s, %s\nSSN: %s\nGross Sales: $%.2f\nCommission " +
+      "Commision Employee: %s, %s\n SSN: %s\n Gross Sales: $%.2f\n Commission " +
       "Rate: %.2f",
       lastName, firstName, socialSecurityNumber, grossSales, commissionRate);
   }
