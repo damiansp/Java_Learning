@@ -1,16 +1,11 @@
-public class CommissionEmployee {
-  private final String firstName;
-  private final String lastName;
-  private final String ssn;
+public class CommissionEmployee extends Employee {
   private double grossSales;
   private double commissionRate;
 
   public CommissionEmployee(
       String firstName, String lastName, String ssn, double grossSales,
       double commissionRate) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.ssn = ssn;
+    super(firstName, lastName, ssn);
     if (isValidSales(grossSales)) { this.grossSales = grossSales; }
     if (isValidCommission(commissionRate)) {
       this.commissionRate = commissionRate;
@@ -31,12 +26,6 @@ public class CommissionEmployee {
     return true;
   }
 
-  public String getFirstName() { return firstName; }
-
-  public String getLastName() { return lastName; }
-
-  public String getSSN() { return ssn; }
-
   public void setGrossSales(double grossSales) {
     if (isValidSales(grossSales)) { this.grossSales = grossSales; }
   }
@@ -51,13 +40,13 @@ public class CommissionEmployee {
 
   public double getCommissionRate() { return commissionRate; }
 
+  @Override
   public double earnings() { return getCommissionRate() * getGrossSales(); }
 
   @Override
   public String toString() {
     return String.format(
-      "Commission Employee: %s, %s\n SSN: %s\n Sales: $%.2f\n Commission: %.2f",
-      getLastName(), getFirstName(), getSSN(), getGrossSales(),
-      getCommissionRate());
+      "Commission Employee: %s, %s\n Sales: $%,.2f\n Commission: %.2f",
+      super.toString(), getGrossSales(), getCommissionRate());
   }
 }
