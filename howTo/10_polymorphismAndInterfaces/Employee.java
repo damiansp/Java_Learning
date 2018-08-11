@@ -16,7 +16,7 @@ public abstract class Employee {
   @Override
   public String toString() {
     return String.format("%s, %s\nSSN: %s",
-                         getLastName(), getFirstName, getSSN());
+                         getLastName(), getFirstName(), getSSN());
   }
 
   public abstract double earnings(); 
