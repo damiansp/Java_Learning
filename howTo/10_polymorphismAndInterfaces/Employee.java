@@ -1,4 +1,4 @@
-public abstract class Employee {
+public abstract class Employee implements Payable {
   private final String firstName;
   private final String lastName;
   private final String ssn;
@@ -19,5 +19,7 @@ public abstract class Employee {
                          getLastName(), getFirstName(), getSSN());
   }
 
-  public abstract double earnings(); 
+  public abstract double earnings();
+  
+  public double getPaymentAmount() { return earnings(); } 
 }
