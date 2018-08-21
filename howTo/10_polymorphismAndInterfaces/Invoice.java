@@ -16,7 +16,7 @@ public class Invoice implements Payable {
     this.quantity = quantity;
     this.partNumber = partNumber;
     this.partDescription = partDescription;
-    this.pricePerItem = pricePerItem.
+    this.pricePerItem = pricePerItem;
   }
 
   public String getPartNumber() { return partNumber; }
