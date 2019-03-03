@@ -13,7 +13,7 @@ public class GenericMethods {
   }
 
 
-  public static void printArray(T[] inputArray) {
+  public static <T> void printArray(T[] inputArray) {
     for (T elem: inputArray) System.out.printf("%s ", elem);
     System.out.println();
   }
