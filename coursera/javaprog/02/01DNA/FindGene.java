@@ -8,15 +8,21 @@ public class FindGene {
   public static void main(String[] args) {
     testFindGene();
   }
+
   
   public static String findGene(String dna) {
     final String START = "ATG";
     final String STOP =  "TAA";
     String result = "";
     int startIndex = dna.indexOf(START);
+
+    if (startIndex < 0) { return result; }
+    
     int stopIndex = dna.indexOf(STOP, startIndex + START.length());
-    if (startIndex < 0 || stopIndex < 0) {
-      return result;
+
+    while ((stopIndex - startIndex) % 3 != 0) {
+      if (stopIndex < 0) { return result; }
+      stopIndex = dna.indexOf(STOP, stopIndex);
     }
     result = dna.substring(startIndex, stopIndex + STOP.length());
     return result;
