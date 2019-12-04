@@ -18,7 +18,7 @@ public class FindAllGenes {
     for (String stopCodon: STOP_CODONS) {
       int idx = findStopCodon(dna, startIdx, stopCodon);
       
-      if (idx < endIdx) { endIdx = idx; }
+      if (idx > -1 && idx < endIdx) { endIdx = idx; }
     }
 
     if (endIdx == dna.length()) { return ""; }
@@ -33,31 +33,26 @@ public class FindAllGenes {
       if ((currIdx - startIdx) % 3 == 0) { return currIdx; }
       currIdx = dna.indexOf(stopCodon, currIdx + 1);
     }
-    return dna.length();
+    return -1;
   }
 
+
+  public static boolean isMultipleOf(String str, int divisor) {
+    boolean flag = str.length() % divisor == 0 ? true : false;
+    return flag;
+  }
+
+  
   public static void testFindGene() {
-    String dna = "AATGCGTAATATGGT";
-    String gene = findGene(dna);
+    String[] testDNA = {"AATGCGCTAATATGGT", "ATCCTATGCTTCGGCCTGCTCTAATATGGTAG",
+                        "ATGTAA", "TTAATT"};
 
-    dna = "AATGCTAGGGTAATATGGT";
-    gene = findGene(dna);
-    System.out.println("DNA strand is " + dna);
-    System.out.println("Gene is " + gene);
-
-    dna = "ATCCTATGCTTCGGCCTGCTCTAATATGGTAG";
-    gene = findGene(dna);
-    System.out.println("DNA strand is " + dna);
-    System.out.println("Gene is " + gene);
-
-    dna = "ATGTAA";
-    gene = findGene(dna);
-    System.out.println("DNA strand is " + dna);
-    System.out.println("Gene is " + gene);
-
-    dna = "TTAATT";
-    gene = findGene(dna);
-    System.out.println("DNA strand is " + dna);
-    System.out.println("Gene is " + gene);
+    for (String dna: testDNA) {
+      String gene = findGene(dna);
+      
+      System.out.println("DNA strand is " + dna);
+      System.out.println(
+        "Gene is " + gene +  "; passes: " + isMultipleOf(gene, CODON_LENGTH));
+    }
   }
 }
