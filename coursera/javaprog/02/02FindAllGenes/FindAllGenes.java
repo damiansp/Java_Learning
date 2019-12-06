@@ -8,9 +8,28 @@ public class FindAllGenes {
     testFindGene();
   }
 
+
+  public static void findAllGenes(String dna) {
+    int startIdx = 0;
+    boolean geneFound = false;
+    
+    while (true) {
+      String gene = findGene(dna, startIdx);
+      if (gene.isEmpty()) {
+        if (!geneFound) { System.out.println("No gene found."); }
+        break;
+      }
+      System.out.println("Found gene: "
+                         + gene
+                         +  "; passes: "
+                         + isMultipleOf(gene, CODON_LENGTH));
+      geneFound = true;
+      startIdx = dna.indexOf(gene, startIdx) + gene.length();
+    }
+  }
   
-  public static String findGene(String dna) {
-    int startIdx = dna.indexOf(START_CODON);
+  public static String findGene(String dna, int where) {
+    int startIdx = dna.indexOf(START_CODON, where);
 
     if (startIdx == -1) { return ""; }    
     int endIdx = dna.length();
@@ -45,14 +64,12 @@ public class FindAllGenes {
   
   public static void testFindGene() {
     String[] testDNA = {"AATGCGCTAATATGGT", "ATCCTATGCTTCGGCCTGCTCTAATATGGTAG",
-                        "ATGTAA", "TTAATT"};
+                        "ATGTAAATGTAG", "TTAATT",
+                        "ATGAGCTCTCGCTCTGAGATGCTCTCATGGTAGTTAGTTTAG"};
 
     for (String dna: testDNA) {
-      String gene = findGene(dna);
-      
       System.out.println("DNA strand is " + dna);
-      System.out.println(
-        "Gene is " + gene +  "; passes: " + isMultipleOf(gene, CODON_LENGTH));
+      findAllGenes(dna);
     }
   }
 }
