@@ -9,13 +9,7 @@ public class CSVMax {
     CSVRecord largestSoFar = null;
 
     for (CSVRecord currentRow: parser) {
-      if (largestSoFar == null) { largestSoFar = currentRow; }
-      else {
-        double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
-        double largestTemp = Double.parseDouble(
-          largestSoFar.get("TemperatureF"));
-        if (currentTemp > largestSoFar) { largestSoFar = currentRow; }
-      }
+      largestSoFar = getLargestOfTwo(currentRow, largestSoFar);
     }
     return largestSoFar;
   }
@@ -28,14 +22,19 @@ public class CSVMax {
     for (File f: dr.selectedFiles()) {
       FileResource fr = new FileResource(f);
       CSVRecord currentRow = hottestHourInFile(fr.getCSVParser());
+      largestSoFar = getLargestOfTwo(currentRow, largestSoFar);
+    }
+    return largestSoFar;
+  }
 
-      if (largestSoFar == null) { largestSoFar == currentRow; }
-      else {
-        double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
-        double largestTemp = Double.parseDouble(
-          largestSoFar.get("TemperatureF"));
-        if (currentTemp > largestSoFar) { largestSoFar = currentRow; }
-      }
+
+  public CSVRecord getLargestOfTwo(CSVRecord currentRow, CSVRecord largestSoFar)
+  {
+    if (largestSoFar == null) { largestSoFar == currentRow; }
+    else {
+      double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
+      double largestTemp = Double.parseDouble(largestSoFar.get("TemperatureF"));
+      if (currentTemp > largestSoFar) { largestSoFar = currentRow; }
     }
     return largestSoFar;
   }
