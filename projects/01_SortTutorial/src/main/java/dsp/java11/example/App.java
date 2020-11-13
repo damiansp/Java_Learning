@@ -1,13 +1,11 @@
-package dsp.java11.example;
+package dsp.java11.example.stringsort;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+
+public class App {
+    public static void main( String[] args ) {
+      var actualNames = new String[]{
+        "Johnson", "Wilson", "Wilkinson", "Abraham", "Dagobert"};
+      Sort.sort(actualNames);
+      for (final String name: actualNames) System.out.println(name);
     }
 }
